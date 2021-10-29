@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
-    static List<char[]> changeIntToCharArray(Integer[] nums){
+    static List<char[]> changeIntToCharArray(int[] nums){
         List<char[]> listOfChars = new ArrayList<>();
-        for (Integer number: nums ) {
+        for (int number: nums ) {
             listOfChars.add(Integer.toBinaryString(number).toCharArray());
 
         }
@@ -33,9 +31,23 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Integer[] liczby = {9, 529, 1041};
+        int[] liczby = {9, 529, 1041};
         calculateBiggestBinaryGap(changeIntToCharArray(liczby));
 
+        System.out.println("Please input numbers:");
+        Scanner input = new Scanner(System.in);
+        ArrayList<Integer> list = new ArrayList<>();
+        while (input.hasNextInt()) {
+            list.add(input.nextInt());
+        }
+
+        for (Integer p : list){
+            System.out.println(p);
+        }
+        input.close();
+
+
+        calculateBiggestBinaryGap(changeIntToCharArray(list.stream().mapToInt(i->i).toArray()));
 
     }
 }
